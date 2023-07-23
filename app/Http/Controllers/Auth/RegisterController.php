@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+
+    private $formItems = ["username", "mail", "password"];
+    private $validator = [
+        "username" => "required|min:2|max:12",
+        "mail" => "required|min:5|max:40|email",
+                    Rule::unique("users", "mail"),
+        "password" => "reauired|alpha_num|min:8|max:20",
+        "passwordConfirm" => "reauired|alpha_num|min:8|max:20|same:password",
+    ];
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -40,6 +49,9 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
+
+        $input = $request->only(['username', 'mail', 'password']);
+
         if($request->isMethod('post')){
 
             $username = $request->input('username');
@@ -54,8 +66,12 @@ class RegisterController extends Controller
 
             return redirect('added');
         }
+
+        $request->session()->put("form_input", $input);
         return view('auth.register');
     }
+
+    
 
     public function added(){
         return view('auth.added');
