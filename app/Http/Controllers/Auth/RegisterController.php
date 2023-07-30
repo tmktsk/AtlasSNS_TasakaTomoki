@@ -6,18 +6,11 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
-{
-
-    private $formItems = ["username", "mail", "password"];
-    private $validator = [
-        "username" => "required|min:2|max:12",
-        "mail" => "required|min:5|max:40|email",
-                    Rule::unique("users", "mail"),
-        "password" => "reauired|alpha_num|min:8|max:20",
-        "passwordConfirm" => "reauired|alpha_num|min:8|max:20|same:password",
-    ];
+{   
+    
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -36,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -54,6 +47,13 @@ class RegisterController extends Controller
 
         if($request->isMethod('post')){
 
+            $request->validate([
+                "username" => "required|min:2|max:12",
+                "mail" => "required|min:5|max:40|email|unique:users,mail",
+                "password" => "required|alpha_num|min:8|max:20",
+                "passwordConfirm" => "required|alpha_num|min:8|max:20|same:password",
+            ]);
+
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
@@ -64,7 +64,7 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
 
-            return redirect('added');
+            return redirect('added')->with('username',$username);
         }
 
         $request->session()->put("form_input", $input);

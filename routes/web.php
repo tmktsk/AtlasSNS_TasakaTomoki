@@ -11,12 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
 
 
 //ログアウト中のページ
@@ -32,9 +27,15 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
-Route::get('/profile','UsersController@profile');
+Route::get('/profile','UsersController@profile')->middleware('auth');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@index')->middleware('auth');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','PostsController@index')->middleware('auth');
+Route::get('/follower-list','PostsController@index')->middleware('auth');
+
+Route::get('/logout','Auth\LoginController@login');
+Route::post('/logout','Auth\LoginController@login');
+
+//ログアウト機能
+Route::get('/logout','Auth\LoginController@logout');

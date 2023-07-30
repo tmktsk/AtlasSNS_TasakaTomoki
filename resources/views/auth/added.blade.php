@@ -1,13 +1,11 @@
-<?php
-session_start();
+
 
 @extends('layouts.logout')
 
 @section('content')
 
-
 <div id="clear">
-  <p>{{ $_SESSION["username"] }}さん</p>
+  <p>{{ session('username') }}さん</p>
   <p>ようこそ！AtlasSNSへ！</p>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
@@ -15,7 +13,7 @@ session_start();
   <p class="btn"><a href="/login">ログイン画面へ</a></p>
 </div>
 @endsection
-?>
+
 
 
 
