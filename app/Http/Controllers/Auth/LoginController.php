@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
+    // protected $redirectTo = '/top';
 
     /**
      * Create a new controller instance.
@@ -46,11 +46,14 @@ class LoginController extends Controller
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
-                return redirect('/top');
+
+                $user = Auth::user();
+                return redirect('/top')->with('username', $user->username);
             }
         }
         return view("auth.login");
     }
+
 
     public function logout(Request $request){
         Auth::logout();

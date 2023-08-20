@@ -6,7 +6,6 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {   
@@ -43,7 +42,7 @@ class RegisterController extends Controller
 
     public function register(Request $request){
 
-        $input = $request->only(['username', 'mail', 'password']);
+        $input = $request->only(['username', 'mail', 'password', 'password_confirmation']);
 
         if($request->isMethod('post')){
 
@@ -51,29 +50,38 @@ class RegisterController extends Controller
                 "username" => "required|min:2|max:12",
                 "mail" => "required|min:5|max:40|email|unique:users,mail",
                 "password" => "required|alpha_num|min:8|max:20",
-                "passwordConfirm" => "required|alpha_num|min:8|max:20|same:password",
+                "password_confirmation" => "required|alpha_num|min:8|max:20|same:password",
             ]);
 
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
+            $password_confirmation = $request->input('password_confirmation');
 
-            User::create([
+            $user = User::create([
                 'username' => $username,
                 'mail' => $mail,
                 'password' => bcrypt($password),
+                'password_confirmation' => $password_confirmation
             ]);
+            $user->save();
+            $user->setRandomImage();
 
+
+            $request->session()->put("form_input", $input);
             return redirect('added')->with('username',$username);
-        }
-
-        $request->session()->put("form_input", $input);
+        
+        };
         return view('auth.register');
+        
     }
+        
 
     
 
     public function added(){
         return view('auth.added');
     }
-}
+
+};
+

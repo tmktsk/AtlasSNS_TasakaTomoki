@@ -8,15 +8,121 @@ header{
     background:#186AC9;
 }
 
+#head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info {
+    position: absolute;
+    right: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.Icon {
+    position: absolute;
+    right: 2%;
+    margin-left: 10px;
+}
+
+.menu-container {
+    position: relative;
+    /* right: 80px; */
+    display: inline-block;
+}
+
+.menu-list {
+    display: none; /* 初期状態ではメニューを非表示にする */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 18.5%;
+    right: 0;
+}
+
+.menu-list li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.toggle-menu {
+    position: absolute;
+    right: 8%;
+    cursor: pointer; /* クリック可能なカーソルを指定 */
+    color:white;
+    font-weight: bold;
+}
+
+/* アップ矢印のスタイル */
+.toggle-menu.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.post-img {
+    border-radius: 5px; 
+    position: absolute; 
+    right: 30%; 
+    width: 55px;
+    height: auto;
+}
+
 /* main content */
 #row{
     display: flex;
     flex-flow: row wrap;
 }
 #container{
-    flex: 0 0 80%;
+    display:flex;
+    /* flex: 0 0 80%; */
 }
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+.white-bold-text {
+    position: absolute;
+    right: 10%;
+    color:white;
+    font-weight: bold;
+}
+
+
+  /* フォームコントロールのスタイル */
+  .post-form {
+    border: none; /* 枠線を無しにする */
+    background-color: transparent; /* 背景色を透明にする */
+    width: 20%; /* 幅を指定（適宜調整してください） */
+    font-size: 16px; /* フォントサイズを指定 */
+    color: #555; /* テキストの色を指定 */
+    outline: none; /* クリック時のフォーカス線を無しにする */
+    margin-left: 20vw;
+    margin-top: 10vh;
+  }
+
+  .post-form:focus::placeholder {
+    color: transparent;
+}
+
+.postIcon {
+    margin-left:10vw;
+}
+  
+
+  /* placeholderの文字のスタイル */
+  .form-control::placeholder {
+    color: #ccc; /* 薄っすら表示する色を指定 */
+  }
+
+  /* 入力時のカーソルのスタイル */
+  .form-control:focus {
+    outline: none;
+  }
