@@ -2,4 +2,5 @@
 
 @section('content')
 <p>フォローリスト</p>
+<!--  ォローボタン -->
 @endsection

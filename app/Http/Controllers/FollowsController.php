@@ -2,29 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 // use App\Models\Following;
 // use App\Models\Follower;
-
-use App\Models\User;
-
-class FollowController extends Controller
-{
-    public function follow(User $user)
-    {
-        Auth::user()->following()->attach($user);
-
-        return redirect()->back();
-    }
-
-    public function unfollow(User $user)
-    {
-        Auth::user()->following()->detach($user);
-
-        return redirect()->back();
-    }
-}
 
 
 class FollowsController extends Controller
@@ -58,6 +40,17 @@ class FollowsController extends Controller
     // }
 
     //
+
+    public function follow(User $user) {
+        auth()->user()->following()->attach($user->id);
+        return back();
+    }
+
+    public function unfollow(User $user) {
+        auth()->user()->following()->detach($user->id);
+        return back();
+    }
+
     public function followList(){
         return view('follows.followList');
     }

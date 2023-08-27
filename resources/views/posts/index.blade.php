@@ -2,61 +2,48 @@
 
 @section('content')
     <div class="container">
-        <img  src="{{ asset('images/' . Auth::user()->images) }}" alt="User Icon" class="postIcon">
+        <img  src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="postIcon">
         {!! Form::open(['url' => '/create', 'method' => 'POST']) !!}
             {{ Form::input('text', 'post', null, ['required', 'class' => 'post-form', 'placeholder' => '投稿内容を入力してください。']) }}
             <input type="image" src="images/post.png" class="post-img">
         {!! Form::close() !!}
     </div>
-    @if(session('postContent'))
+    @foreach ($posts as $post)
         <div class="post-content">
             <img src="{{ asset('images/' . Auth::user()->images) }}" alt="User Icon" class="postIcon">
-            <span class="username">{{ Auth::user()->username }}</span>
-            <span class="content">{{ session('post') }}</span>
+            <span class="username">{{ $post->user->username }}</span>
+            <span class="post">{!! $post->post !!}</span>
+            <form
+                style="disply: inline-block;"
+                method="GET"
+                action="{{ route('post.delete', $post->id) }}">
+                @csrf
+                @method('DELETE')
+                <div class="dlt-btn-cntainer">
+                    <button class="dlt-btn">
+                        <img src="images/trash.png" alt="削除ボタン1" class="normal-img" width="50" height="50">
+                        <img src="images/trash-h.png" alt="削除ボタン2" class="hover-img" width="50" height="50">
+                   </button>
+                </div>
+            </form>
+            <div class="content">
+                <a class="js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">
+                    <img src="images/edit.png" alt="編集" class="edit-img" width="50" height="50">
+                </a>
+            </div>
         </div>
-    @endif
-        <!-- <input type="image" src="images/edit.png" alt="編集" data-toggle="modal" data-target="#editModal" class="edit-post-btn" /> -->
-    <!-- ゴリゴリコードからコピペ -->
-    <div class="modal-open-button">
-    <a class="js-open-button" href="#" data-target=".target-modal">
-        <img src="images/edit.png" alt="編集">
-    </a>
-    </div>
-    <div class="modal-contact target-modal">
-        <div class="modal-contact-head">見出し</div>
-        <div class="modal-contact-content">
-            <div class="modal-contact-title">タイトル1</div>
-            <div class="modal-contact-text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
-            <div class="modal-contact-title">タイトル2</div>
-            <div class="modal-contact-text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
-            <div class="modal-contact-title">タイトル3</div>
-            <div class="modal-contact-text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
-            <div class="modal-contact-title">タイトル4</div>
-            <div class="modal-contact-text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+    @endforeach
+        <div class="modal js-modal">
+            <div>class="modal__bg js-modal-close"></div>
+            <div class="modal__content">
+                <form action="{{ route('update', ['id' => $post->id]) }}" method="POST">
+                    @csrf
+                    <textarea name="update" id="modal_post">{{ $post->post }}</textarea>
+                    <input type="hidden" name="" class="modal_id" value="">
+                    <input type="image" src="images/edit.png" alt="更新ボタン" class="update-btn" width="50" height="50">
+                </form>
+                <a class="js-modal-close" href="#">✖</a>
+            </div>
         </div>
-        <div class="modal-contact-button">
-            <a class="js-close-button" href="" data-target=".target-modal">閉じる</a>
-        </div>
-        <div class="modal-contact-icon">
-            <a class="js-close-button" href="" data-target=".target-modal"><img src="img/02.png" alt=""></a>
-        </div>
-    </div>
-<div class="modal-contact-background target-modal"></div>
-
-<script>
-    $(function() {
-    $('.js-open-button').on('click', function(e) {
-        e.preventDefault();
-        var target = $(this).data('target');
-        $(target).fadeIn();
-    });
-
-    $('.js-close-button').on('click', function(e) {
-        e.preventDefault();
-        var target = $(this).data('target');
-        $(target).fadeOut();
-    });
-    });
-</script>
 
 @endsection

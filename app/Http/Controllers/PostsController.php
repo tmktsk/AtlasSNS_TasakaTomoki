@@ -11,19 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
-    //
     public function index()
     {
-        if (Auth::check()) {
-            Auth::user()->setRandomImage();
-        }
-
-        return view('posts.index');
+        $followed_id = Auth::user()->following()->pluck('followed_id');
+        $login_id = Auth::id();
+        $posts = Post::with('user')->whereIn('posts.user_id', $followed_id)
+            ->orWhere('posts.user_id', $login_id)->get();
+        // ddd($posts);
+        return view('posts.index')->with('posts', $posts);
     }
 
     public function store(Request $request)
     {
-        // $user_id = Auth::id();
         if ($request->isMethod('post')) {
             $request->validate([
                 'post' => 'required|min:1|max:150',
@@ -31,26 +30,34 @@ class PostsController extends Controller
 
             $postContent = $request->input('post');
 
-            $post = Post::create([
+            Post::create([
                 'post' => $postContent,
-                // 'user_id' => Auth::id(),
+                'user_id' => Auth::id(),
             ]);
-            $post->save();
+            // $posts->save();
+
+            // $following_id = Auth::user()->following()->pluck('followed_id');
+            // $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
 
 
-            return redirect('/top')->with('post', $postContent);
 
-            // return redirect()->route('index')->with('postContent', $postContent);
+            return redirect('/top');
         }
-
-        // return view('posts.index', compact('postContent'));
-
-        // DB::table('posts')->insert([
-        //     'user_id' => $user_id,
-        //     'post' => $postContent,
-        // ]);
-
-        // return back();
     }
 
+    public function delete($id)
+    {
+        Post::where('id', $id)->delete();
+        return redirect('/top');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $updatedPostContent = nl2br($request->input('update'));
+        $post = Post::find($id);
+        $post->post = $updatedPostContent;
+        $post->save();
+
+        return redirect('/top')->with('post', $post);
+    }
 }
