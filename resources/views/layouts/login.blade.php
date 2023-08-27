@@ -18,6 +18,7 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -33,8 +34,6 @@
                 </ul>
             </div>
             <img src="{{ asset('images/' . Auth::user()->images) }}" alt="User Icon" class="Icon">
-
-
         </div>
     </header>
     <div id="row">

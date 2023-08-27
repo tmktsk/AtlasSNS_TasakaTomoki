@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\DB;
-
-// use App\Post;
+use App\Post;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -14,21 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class PostsController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         if (Auth::check()) {
             Auth::user()->setRandomImage();
         }
-        
+
         return view('posts.index');
     }
-
-    // public function postCreate(Request $request)
-    // {
-    //     $postContent = $request->input('post');
-    //     return view('posts.index', ['postContent' => $postContent]);
-    //     // Post::create(['post' => $postContent]);
-    //     // return back();
-    // }
 
     public function store(Request $request)
     {
@@ -38,17 +29,25 @@ class PostsController extends Controller
                 'post' => 'required|min:1|max:150',
             ]);
 
-        $postContent = $request->input('post');
+            $postContent = $request->input('post');
 
-        return redirect('/top')->with('postContent', $postContent);
+            $post = Post::create([
+                'post' => $postContent,
+                // 'user_id' => Auth::id(),
+            ]);
+            $post->save();
 
-        // return redirect()->route('index')->with('postContent', $postContent);
+
+            return redirect('/top')->with('post', $postContent);
+
+            // return redirect()->route('index')->with('postContent', $postContent);
         }
+
         // return view('posts.index', compact('postContent'));
 
         // DB::table('posts')->insert([
         //     'user_id' => $user_id,
-        //     'post' => $postContent, 
+        //     'post' => $postContent,
         // ]);
 
         // return back();

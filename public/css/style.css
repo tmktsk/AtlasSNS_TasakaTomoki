@@ -67,24 +67,27 @@ header{
 }
 
 .post-img {
-    border-radius: 5px; 
-    position: absolute; 
-    right: 30%; 
-    width: 55px;
-    height: auto;
+    border-radius: 5px;
+    width: 70px;
+    height: 70px;
+    margin-left: 42vw;
+    /* margin-top: 17vh; */
 }
 
 /* main content */
 #row{
     display: flex;
-    flex-flow: row wrap;
 }
-#container{
+
+.container{
     display:flex;
-    /* flex: 0 0 80%; */
+    border-bottom: 10px solid #ccc;
+    padding-bottom: 30px;
 }
+
 #side-bar{
-    flex: 0 0 19%;
+    flex: 0 0 20%;
+    margin-left:auto;
     border-left: 1px solid #727272;
 }
 
@@ -97,32 +100,145 @@ header{
 
 
   /* フォームコントロールのスタイル */
-  .post-form {
+.post-form {
     border: none; /* 枠線を無しにする */
     background-color: transparent; /* 背景色を透明にする */
-    width: 20%; /* 幅を指定（適宜調整してください） */
-    font-size: 16px; /* フォントサイズを指定 */
+    width: 40%; /* 幅を指定（適宜調整してください） */
+    font-size: 27px; /* フォントサイズを指定 */
     color: #555; /* テキストの色を指定 */
     outline: none; /* クリック時のフォーカス線を無しにする */
-    margin-left: 20vw;
-    margin-top: 10vh;
-  }
+    margin-left: 3vw;
+    margin-top: 15vh;
+    opacity: 0.5;
+}
 
-  .post-form:focus::placeholder {
+.post-form:focus::placeholder {
     color: transparent;
 }
 
 .postIcon {
-    margin-left:10vw;
+    margin-left: 10vw;
+    margin-top: 10vh;
+    width: auto;
+    height: 85px;
 }
-  
 
   /* placeholderの文字のスタイル */
-  .form-control::placeholder {
+.form-control::placeholder {
     color: #ccc; /* 薄っすら表示する色を指定 */
-  }
+}
 
   /* 入力時のカーソルのスタイル */
-  .form-control:focus {
+.form-control:focus {
     outline: none;
-  }
+}
+
+.username, .content {
+    display: block;
+}
+
+.username {
+    margin-left: 15vw;
+    margin-top: -9vh;
+    font-weight: 600;
+
+}
+
+.content {
+    margin-left: 16vw;
+    margin-top: 3vh;
+}
+
+/* ゴリゴリコードからコピペ */
+.modal-contact {
+    position: fixed;
+    z-index: 20;
+    width: 800px;
+    max-width: calc(100% - 20px * 2);
+    height: 700px;
+    max-height: calc(100% - 20px * 2);
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    color: #707070;
+    display: none;
+}
+
+.modal-contact-head {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.modal-contact-head:after {
+    content: '';
+    width: 100px;
+    height: 3px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: #00CC99;
+}
+
+.modal-contact-content {
+    margin-top: 40px;
+    height: calc(100% - 150px);
+    overflow: auto;
+}
+
+
+.modal-contact-content> :first-child {
+    margin-top: 0;
+}
+
+.modal-contact-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.modal-contact-text {
+    margin-top: 30px;
+}
+
+.modal-contact-button {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.modal-contact-button a {
+    display: inline-block;
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background: #00CC99;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
+}
+
+.modal-contact-icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -20px;
+    right: -15px;
+    z-index: 30;
+}
+
+.modal-contact-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    display: none;
+}
