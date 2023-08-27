@@ -14,16 +14,16 @@ class PostsController extends Controller
     //
     public function index()
     {
-        if (Auth::check()) {
-            Auth::user()->setRandomImage();
-        }
+        // if (Auth::check()) {
+        //     Auth::user()->setRandomImage();
+        // }
+        $posts = Post::all();
 
-        return view('posts.index');
+        return view('posts.index')->with('posts', $posts);
     }
 
     public function store(Request $request)
     {
-        // $user_id = Auth::id();
         if ($request->isMethod('post')) {
             $request->validate([
                 'post' => 'required|min:1|max:150',
@@ -33,10 +33,12 @@ class PostsController extends Controller
 
             $post = Post::create([
                 'post' => $postContent,
-                // 'user_id' => Auth::id(),
+                'user_id' => Auth::id(),
             ]);
             $post->save();
 
+
+            // return view('posts', compact('posts'));
 
             return redirect('/top')->with('post', $postContent);
 

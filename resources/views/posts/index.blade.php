@@ -8,13 +8,15 @@
             <input type="image" src="images/post.png" class="post-img">
         {!! Form::close() !!}
     </div>
-    @if(session('postContent'))
+    <!-- @if(session('post')) -->
+    @foreach ($posts as $post)
         <div class="post-content">
             <img src="{{ asset('images/' . Auth::user()->images) }}" alt="User Icon" class="postIcon">
             <span class="username">{{ Auth::user()->username }}</span>
-            <span class="content">{{ session('post') }}</span>
+            <span class="content">{{ $post->post }}</span>
         </div>
-    @endif
+    @endforeach
+    <!-- @endif -->
         <!-- <input type="image" src="images/edit.png" alt="編集" data-toggle="modal" data-target="#editModal" class="edit-post-btn" /> -->
     <!-- ゴリゴリコードからコピペ -->
     <div class="modal-open-button">
@@ -41,22 +43,22 @@
             <a class="js-close-button" href="" data-target=".target-modal"><img src="img/02.png" alt=""></a>
         </div>
     </div>
-<div class="modal-contact-background target-modal"></div>
+    <div class="modal-contact-background target-modal"></div>
 
-<script>
-    $(function() {
-    $('.js-open-button').on('click', function(e) {
-        e.preventDefault();
-        var target = $(this).data('target');
-        $(target).fadeIn();
-    });
+    <script>
+        $(function() {
+        $('.js-open-button').on('click', function(e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $(target).fadeIn();
+        });
 
-    $('.js-close-button').on('click', function(e) {
-        e.preventDefault();
-        var target = $(this).data('target');
-        $(target).fadeOut();
-    });
-    });
-</script>
+        $('.js-close-button').on('click', function(e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $(target).fadeOut();
+        });
+        });
+    </script>
 
 @endsection

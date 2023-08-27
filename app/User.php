@@ -36,4 +36,9 @@ class User extends Authenticatable
         $this->images = $randomImage;
         $this->save();
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
