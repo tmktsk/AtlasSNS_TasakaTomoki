@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -44,17 +45,17 @@
             <div id="confirm">
                 <p>{{ Auth::user()->username }}さんの</p>
                 <div>
-                <p>フォロー数</p>
-                <p>〇〇名</p>
+                    <span>フォロー数</span>
+                    <span>{{ $followingCount }}名</span>
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
+                <button type="button" class="btn btn-primary follow-button"><a href="/follow-list">フォローリスト</a></button>
                 <div>
-                <p>フォロワー数</p>
-                <p>〇〇名</p>
+                    <span>フォロワー数</span>
+                    <span>{{ $followerCount }}名</span>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <button type ="button" class="btn btn-primary follower-button"><a href="/follower-list">フォロワーリスト</a></button>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <button type="button" class="btn btn-primary search-button"><a href="/search">ユーザー検索</a></span>
         </div>
     </div>
     <footer>

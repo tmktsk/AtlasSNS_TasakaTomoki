@@ -8,16 +8,26 @@ use App\User;
 
 class UsersController extends Controller
 {
-    //
-    public function profile(){
-        return view('users.profile');
+    public function profile(User $user){
+
+        return view('users.userprofile', compact('user'));
     }
-    public function search(){
-        $user = User::where('id', '!=', auth()->user()->id)->get();
-        return view('users.search', compact('user'));
+    
+    public function search(Request $request){
+        $searchWord = $request->input('search');
+        $query = User::where('id', '!=', auth()->user()->id);
+            if ($searchWord) {
+                $query->where('users.username', 'like', "%{$searchWord}%");
+            }
+        $user = $query->get();
+        return view('users.search', compact('user', 'searchWord'));
     }
 
-    // public function login(){
-    //     return view('layouts.login');
+
+    // public function usersearch(Request $request){
+    //     $searchWord = $request->input('search');
+    //     $users = User::where('username', 'like', "%{$searchWord}")->get();
+    //     return view('users.search', ['users' => $users]);
     // }
+
 }

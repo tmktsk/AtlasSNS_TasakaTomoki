@@ -17,8 +17,13 @@ class PostsController extends Controller
         $login_id = Auth::id();
         $posts = Post::with('user')->whereIn('posts.user_id', $followed_id)
             ->orWhere('posts.user_id', $login_id)->get();
-        // ddd($posts);
-        return view('posts.index')->with('posts', $posts);
+        $user = Auth::user();
+        $followingCount = $user->following()->count();
+        $followerCount = $user->followers()->count();
+        // dd($followingCount);
+        return view('posts.index')->with('posts', $posts)
+        ->with('followingCount', $followingCount)
+        ->with('followerCount', $followerCount);
     }
 
     public function store(Request $request)
