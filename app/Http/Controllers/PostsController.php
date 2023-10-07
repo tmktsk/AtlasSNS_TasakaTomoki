@@ -45,8 +45,9 @@ class PostsController extends Controller
             // $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
 
 
+            // return view('posts', compact('posts'));
 
-            return redirect('/top');
+            return redirect('/top')->with('post', $postContent);
         }
     }
 
