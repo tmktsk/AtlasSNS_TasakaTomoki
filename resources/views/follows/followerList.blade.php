@@ -6,7 +6,9 @@
   <h1 class="list-title">Follower List</h1>
   <div class="fw-Icon">
     @foreach ($users as $user)
-      <img src="{{ asset('images/' . $user->images) }}" alt="{{ $user->username }}のアイコン">
+      {!! Form::open(['url' => route('user.profile', ['user' => $user->id]), 'method' => 'post']) !!}
+        <input type="image" src="{{ asset('images/' . $user->images) }}" alt="{{ $user->username }}のアイコン">
+      {!! Form::close() !!}
     @endforeach
   </div>
 </div>
@@ -22,5 +24,4 @@
       </div>
     @endif
   @endforeach
-
 @endsection

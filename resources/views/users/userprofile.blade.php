@@ -10,7 +10,18 @@
   </div>
   <div class="profile-content">
     <p class="profile-name">{{ $user->username }}</p>
-    <p></p>
+    <p>{{ $user->bio }}</p>
+    @if(auth()->user()->isFollowing($user))
+      <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
+        @csrf
+        <input type="submit" class="btn btn-danger pro-btn-danger" name="action" value="フォロー解除">
+      </form>
+    @else
+      <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
+        @csrf
+        <input type="submit" class="pro-follow-btn" name="action" value="フォローする">
+      </form>
+    @endif
   </div>
 </div>
 @if ($user->posts->count() > 0)

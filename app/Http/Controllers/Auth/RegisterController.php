@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterFormRequest;
 
 class RegisterController extends Controller
-{   
-    
+{
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -40,48 +42,50 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
+        // $input = $request->only(['username', 'mail', 'password', 'password_confirmation']);
 
-        $input = $request->only(['username', 'mail', 'password', 'password_confirmation']);
-
-        if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
             $request->validate([
                 "username" => "required|min:2|max:12",
                 "mail" => "required|min:5|max:40|email|unique:users,mail",
                 "password" => "required|alpha_num|min:8|max:20",
-                "password_confirmation" => "required|alpha_num|min:8|max:20|same:password",
+                "password_confirm" => "required|alpha_num|min:8|max:20|same:password",
             ]);
 
-            $username = $request->input('username');
-            $mail = $request->input('mail');
+            // $password = Hash::make($request->input('password'));
+            // $username = $request->input('username');
+            // $mail = $request->input('mail');
+            // $password = $password;
             $password = $request->input('password');
-            $password_confirmation = $request->input('password_confirmation');
+            $password_confirm = $request->input('password_confirm');
 
+            if ($password !== $password_confirm) {
+                return back()->withErrors(['password' => 'パスワードとパスワード確認が一致しません。']);
+            }
             $user = User::create([
-                'username' => $username,
-                'mail' => $mail,
-                'password' => bcrypt($password),
-                'password_confirmation' => $password_confirmation
+                'username' => $request->input('username'),
+                'mail' => $request->input('mail'),
+                'password' => Hash::make($request->input('password')),
+                // 'password_confirmation' => $password_confirmation
             ]);
             $user->save();
-            $user->setRandomImage();
+            // $user->setRandomImage();
 
 
-            $request->session()->put("form_input", $input);
-            return redirect('added')->with('username',$username);
-        
-        };
+            // $request->session()->put("form_input", $input);
+            return redirect('/added')->with('username', $user->username);
+
+        }
         return view('auth.register');
-        
+
     }
-        
 
-    
-
-    public function added(){
+    public function added()
+    {
         return view('auth.added');
     }
 
-};
-
+}

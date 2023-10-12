@@ -42,7 +42,7 @@
         <div class="modal js-modal">
             <div>class="modal__bg js-modal-close"></div>
             <div class="modal__content">
-                <form action="{{ route('update', ['id' => $post->id]) }}" method="POST">
+                <form action="{{ route('update', ['id' => $posts->id]) }}" method="POST">
                     @csrf
                     <textarea name="update" id="modal_post">{{ $post->post }}</textarea>
                     <input type="hidden" name="" class="modal_id" value="">

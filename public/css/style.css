@@ -482,6 +482,25 @@ header {
     top: 25%;
 }
 
+.pro-follow-btn {
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+    background-color: #66ccff;
+    color: white;
+    height: 6vh;
+    width: 8vw;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.btn.pro-btn-danger {
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+}
+
+
 .user-profile {
     position: relative;
     width: 109%;
@@ -512,4 +531,52 @@ header {
     position: absolute;
     right: 2%;
     top: 15%;
+}
+
+.myprofile {
+    display: flex;
+    justify-content: center;
+    height: 110%;
+}
+
+.myuserIcon {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 5%;
+}
+
+.myprofile-item {
+    left: 25%;
+    top: 30%;
+}
+
+.myprofile-item p {
+    font-size: 2rem;
+    margin-bottom: 25%;
+}
+
+.myform {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.my-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.myinput {
+    margin-bottom: 19%;
+    width: 130%;
+    height: 6%;
+}
+
+.btn.btn-danger.myupdate {
+    margin-top: 15%;
+}
+
+.myinput.none:focus::placeholder {
+    color: transparent;
 }

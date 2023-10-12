@@ -36,9 +36,23 @@ class User extends Authenticatable
     {
         $imageNames = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png', 'icon7.png'];
         $randomImage = Arr::random($imageNames);
-        $this->images = $randomImage;
+        $this->images = 'images/' . $randomImage;
         $this->save();
     }
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($user) {
+    //         if (empty($user->images)) {
+    //             // imagesカラムが空の場合、ランダムなアイコン画像を選んで保存する
+    //             $icons = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png', 'icon7.png'];
+    //             $randomIcon = $icons[array_rand($icons)];
+    //             $user->images = $randomIcon;
+    //         }
+    //     });
+    // }
 
     public function follows()
     {

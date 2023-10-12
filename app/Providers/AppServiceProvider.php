@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $user = Auth::user();
             $followingCount = $user->following()->count();
             $followerCount = $user->followers()->count();
-            $view->with('follwingCount', $followingCount)
+            $view->with('followingCount', $followingCount)
                 ->with('followerCount', $followerCount);
         });
         //

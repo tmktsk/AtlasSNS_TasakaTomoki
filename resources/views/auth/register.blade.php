@@ -16,7 +16,7 @@
 {{ Form::text('password',null,['class' => 'input']) }}
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+{{ Form::text('password_confirm',null,['class' => 'input']) }}
 
 @if ($errors->any())
     <div class="alert alert-danger">
