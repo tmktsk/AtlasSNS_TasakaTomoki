@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="head-container">
-        <img  src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="userIcon">
+        <img  src="{{ asset(Auth::user()->images) }}" alt="User Icon" class="userIcon">
         {!! Form::open(['url' => '/create', 'method' => 'POST']) !!}
             @csrf
             {{ Form::input('text', 'post', null, ['required', 'class' => 'post-form', 'placeholder' => '投稿内容を入力してください。']) }}
@@ -38,11 +38,10 @@
                 @endif
             </div>
         </div>
-    @endforeach
         <div class="modal js-modal">
             <div>class="modal__bg js-modal-close"></div>
             <div class="modal__content">
-                <form action="{{ route('update', ['id' => $posts->id]) }}" method="POST">
+                <form action="{{ route('update', ['id' => $post->id]) }}" method="POST">
                     @csrf
                     <textarea name="update" id="modal_post">{{ $post->post }}</textarea>
                     <input type="hidden" name="" class="modal_id" value="">
@@ -51,4 +50,5 @@
                 <a class="js-modal-close" href="#">✖</a>
             </div>
         </div>
+    @endforeach
 @endsection

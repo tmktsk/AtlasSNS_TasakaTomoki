@@ -3,7 +3,7 @@
 @section('content')
 <p>プロフィール</p>
 <div class="myprofile">
-  <img  src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="myuserIcon">
+    <img  src="{{ asset(Auth::user()->images) }}" alt="User Icon" class="myuserIcon">
   <div class="myprofile-item">
     <p>user name</p>
     <p>mail address</p>
@@ -13,13 +13,13 @@
     <p>icon image</p>
   </div>
   <div class="myform">
-    {!! Form::open(['url' => '/setting', 'class' => 'my-form']) !!}
+    {!! Form::open(['url' => '/setting', 'files' => true, 'class' => 'my-form']) !!}
       @csrf
-    {{ Form::text('username', null, ['class' => 'myinput none', 'placeholder' => Auth::user()->username]) }}
-    {{ Form::text('mail', null, ['class' => 'myinput none', 'placeholder' => Auth::user()->mail]) }}
+    {{ Form::text('username', Auth::user()->username, ['class' => 'myinput none', 'placeholder' => Auth::user()->username]) }}
+    {{ Form::text('mail', Auth::user()->mail, ['class' => 'myinput none', 'placeholder' => Auth::user()->mail]) }}
     <input type="password" name="password" class="myinput">
     <input type="password" name="password_confirm" class="myinput">
-    {{ Form::text('bio', null, ['class' => 'myinput']) }}
+    {{ Form::text('bio', Auth::user()->bio, ['class' => 'myinput']) }}
     {{ Form::file('images', ['class' => 'myinput']) }}
 
     @if(session('success'))

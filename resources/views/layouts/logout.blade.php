@@ -7,7 +7,8 @@
   <meta name="description" content="ページの内容を表す文章" />
   <title></title>
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-  <link rel="stylesheet" href="{{ asset('css/logout.css') }} ">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <!--サイトのアイコン指定-->
@@ -20,11 +21,11 @@
   <!--OGPタグ/twitterカード-->
 </head>
 <body>
-  <header>
-    <h1><img src="images/atlas.png"></h1>
-    <p>Social Network Service</p>
+  <header class="title-header">
+    <h1 class="title" style="font-size: 5em;">Atlas</h1>
+    <p class="title" style="font-size: 3em">Social Network Service</p>
   </header>
-  <div id="container">
+  <div id="logout-container">
     @yield('content')
   </div>
   <script src="JavaScriptファイルのURL"></script>

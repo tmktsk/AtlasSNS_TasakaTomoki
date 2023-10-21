@@ -35,7 +35,7 @@
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
             </div>
-            <img src="{{ asset('images/' . Auth::user()->images) }}" alt="User Icon" class="Icon">
+            <img src="{{ asset(Auth::user()->images) }}" alt="User Icon" class="Icon">
         </div>
     </header>
     <div id="row">

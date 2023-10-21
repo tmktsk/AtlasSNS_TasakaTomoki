@@ -36,7 +36,7 @@ class RegisterFormRequest extends FormRequest
             "images" => [
                 "nullable",
                 "file",
-                Rule::in(['jpg', 'png', 'bmp', 'gif', 'svg']),
+                "mimes:jpg,png,bmp,gif,svg",
             ],
         ];
     }

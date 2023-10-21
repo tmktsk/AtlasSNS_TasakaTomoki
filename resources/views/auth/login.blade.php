@@ -1,20 +1,23 @@
 @extends('layouts.logout')
 
 @section('content')
-<!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/login']) !!}
-  @csrf
-  <p>AtlasSNSへようこそ</p>
+<section class="register" style="padding-top: 3em;">
+  <div class="register-form">
+    <!-- 適切なURLを入力してください -->
+    {!! Form::open(['url' => '/login', 'class' => 'logout-block']) !!}
+      @csrf
+      <p class="logout-text">AtlasSNSへようこそ</p>
 
-  {{ Form::label('e-mail') }}
-  {{ Form::text('mail',null,['class' => 'input']) }}
-  {{ Form::label('password') }}
-  {{ Form::password('password',['class' => 'input']) }}
+      {{ Form::label('mail', 'mail adress', ['class' => 'label']) }}
+      {{ Form::text('mail',null,['class' => 'logout-form']) }}
+      {{ Form::label('password', 'password', ['class' => 'label']) }}
+      {{ Form::password('password',['class' => 'logout-form']) }}
 
-  {{ Form::submit('ログイン') }}
+      {{ Form::submit('LOGIN', ['class' => 'first-btn']) }}
 
-  <p><a href="/register">新規ユーザーの方はこちら</a></p>
+      <p class="logout-text"><a href="/register" style="color: #FFFFFF;">新規ユーザーの方はこちら</a></p>
 
-{!! Form::close() !!}
-
+    {!! Form::close() !!}
+  </div>
+</section>
 @endsection

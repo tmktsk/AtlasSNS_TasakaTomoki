@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
+// use Illuminate\Support\Facades\File;
 
 
 
@@ -38,16 +41,36 @@ class UsersController extends Controller
     {
         // if ($request->isMethod('post')) {
 
+            // if (!File::exists(public_path('uploads'))) {
+            //     File::makeDirectory(public_path('uploads'), 0755, true, true);
+            // }
+            $profileImage = $request->file('images');
             $validation = $request->validated();
-
-            $hashedPassword = Hash::make($validation['password']);
 
             $user = Auth::user();
             $user->username = $validation['username'];
             $user->mail = $validation['mail'];
-            $user->password = $validation['password'];
+            $user->password = Hash::make($validation['password']);
             $user->bio = $validation['bio'];
-            $user->images = $validation['images'];
+
+            if($profileImage) {
+                $path = $profileImage->store('');
+                // dd($path);
+                // $path = asset('storage/images'. Auth::user()->images);
+                $user->update(['images' => $path]);
+                $user->save();
+            } else {
+                // asset('images/'. Auth::user()->images);
+                $path = asset('images/'. Auth::user()->images);
+            }
+
+            $user->images = $path;
+            // $user->images = $validation['images'];
+            // if ($request->hasFile('images')) {
+            //     $uploadedFile = $request->file('images');
+            //     $path = $uploadedFile->storeAs('uploads', 'icon.png','public');
+            //     $user->images = $path;
+                // $hasUploadedImage = true;
 
             $user->save();
 

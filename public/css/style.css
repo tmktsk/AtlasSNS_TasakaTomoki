@@ -9,11 +9,117 @@ header {
     background: #186AC9;
 }
 
+.title-header {
+    text-align: center;
+    padding-top: 5em;
+    /* padding-bottom: -10em; */
+}
+
+.title {
+    color: #FFFFFF;
+}
+
 #head {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
+.register {
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #FFFF00 10%, #186AC9 100%);
+    /* background-color: #ccd8ff; */
+}
+
+.register-form {
+    width: 20em;
+    height: 100px;
+    margin: 0 auto;
+    height: 100vh;
+    border-radius: 1em;
+    color: #FFFFFF;
+}
+
+.logout-text {
+    text-align: center;
+    margin: 2em auto;
+}
+
+.logout-block {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
+}
+
+.label {
+    margin-left: 1.5em;
+    margin-bottom: 0.3em;
+}
+
+.logout-form {
+    display: flex;
+    align-items: center;
+    border-radius: 0.8em;
+    border-width: 0.1em;
+    height: 2.5em;
+    width: 20em;
+    margin: 0 auto;
+    margin-bottom: 2.5em;
+}
+
+.first-btn {
+    /* display: flex; */
+    /* justify-content: center; */
+    background-color: #FF0066;
+    color: white;
+    height: 2em;
+    width: 7em;
+    border-radius: 0.6em;
+    margin-left: 4em;
+    font-size: 1.3em;
+    border: none;
+    cursor: pointer;
+}
+
+.clear {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 -1.5em;
+    padding-bottom: 1.5em;
+}
+
+.welcome {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 10% auto;
+}
+
+.complete {
+    font-size: 1.3em;
+}
+
+.welcome-btn {
+    background-color: #FF0066;
+    color: white;
+    height: 2em;
+    width: 7em;
+    border-radius: 0.6em;
+    font-size: 1.3em;
+    border: none;
+    margin-top: 2em;
+    display: flex;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+}
+
 
 .user-info {
     position: absolute;
@@ -23,7 +129,7 @@ header {
 }
 
 #container {
-    /* position: relative; */
+    position: relative;
     width: 70%;
     margin: 0 auto;
 }

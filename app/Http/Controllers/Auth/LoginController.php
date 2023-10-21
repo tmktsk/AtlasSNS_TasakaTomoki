@@ -46,6 +46,11 @@ class LoginController extends Controller
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
+                $path = asset('images/'. Auth::user()->images);
+                // dd($path);
+                $user = Auth::user();
+                $user->images = $path;
+                $user->save();
                 return redirect('/top');
             }
         }

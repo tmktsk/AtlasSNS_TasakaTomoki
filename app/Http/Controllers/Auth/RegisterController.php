@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterFormRequest;
+use Illuminate\Support\Arr;
+
 
 class RegisterController extends Controller
 {
@@ -53,6 +55,7 @@ class RegisterController extends Controller
                 "mail" => "required|min:5|max:40|email|unique:users,mail",
                 "password" => "required|alpha_num|min:8|max:20",
                 "password_confirm" => "required|alpha_num|min:8|max:20|same:password",
+                // "images" => "image|mimes:jpeg,png,jpg,gif|max:2048",
             ]);
 
             // $password = Hash::make($request->input('password'));
@@ -71,6 +74,11 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->input('password')),
                 // 'password_confirmation' => $password_confirmation
             ]);
+
+            $icons = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png', 'icon7.png'];
+            $randomIcon = collect($icons)->random();
+            $user->images = $randomIcon;
+
             $user->save();
             // $user->setRandomImage();
 
