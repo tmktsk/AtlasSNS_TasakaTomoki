@@ -2,7 +2,7 @@
 @section('content')
   <p>ユーザー検索</p>
   <div class="head-container">
-    <form action="{{ route('user.search') }}" method="POST">
+    <form action="{{ route('user.search') }}" method="GET">
       @csrf
       <input type="text" name="search" class="search-form" placeholder="ユーザー名">
       <input type="image" src="images/search.png" class="search-btn" alt="検索">
@@ -13,7 +13,11 @@
   @endif
   @foreach($user as $datauser)
     <div class="search">
-      <img src="{{ asset('images/' . $datauser->images) }}" alt="ユーザーアイコン" class="searchIcon">
+      @if(optional(Auth::user())->check)
+        <img  src="{{ asset('storage/'. $datauser->images) }}" alt="User Icon" class="searchIcon">
+      @else
+        <img src="{{ asset('images/' . $datauser->images) }}" alt="ユーザーアイコン" class="searchIcon">
+      @endif
       <span class="search-name">{{ $datauser->username }}</span>
       <div class="btn-container">
         @if(auth()->user()->isFollowing($datauser))

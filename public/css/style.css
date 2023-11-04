@@ -7,6 +7,7 @@ body {} */
 /* header */
 header {
     background: #186AC9;
+    height: 7em;
 }
 
 .title-header {
@@ -120,6 +121,12 @@ header {
     justify-content: center;
 }
 
+.logo {
+    width: 40%;
+    margin-left: 1em;
+    margin-top: 0.7em;
+}
+
 
 .user-info {
     position: absolute;
@@ -155,24 +162,37 @@ header {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     position: absolute;
-    top: 18.5%;
+    top: 12.2%;
     right: 0;
+    height: 30%;
+    width: 20%;
 }
 
 .menu-list li a {
     display: block;
-    padding: 8px 12px;
+    padding: 0.6em;
     text-decoration: none;
     color: black;
+    text-align: center;
+    font-size: 2em;
+    border: 1px solid blue;
+}
+
+.menu-list li a:hover {
+    background-color: blue;
+    color: white;
+
 }
 
 .toggle-menu {
     position: absolute;
     right: 8%;
+    top: 4%;
     cursor: pointer;
     /* クリック可能なカーソルを指定 */
     color: white;
     font-weight: bold;
+    font-size: 1.5em;
 }
 
 /* アップ矢印のスタイル */
@@ -181,22 +201,30 @@ header {
     transition: transform 0.3s ease;
 }
 
+.sideIcon {
+    height: 75px;
+    width: 75px;
+    margin-top: 1.5em;
+    margin-right: 2em;
+
+}
+
 .head-container {
     display: flex;
     position: relative;
-    width: 80vw;
+    width: 80.9vw;
     margin-left: -6%;
     border-bottom: 10px solid #ccc;
-    padding-bottom: 7%;
+    padding-bottom: 5%;
 }
 
 .post-img {
     border-radius: 5px;
-    width: 70px;
-    height: 70px;
+    width: 4em;
+    height: 4em;
     position: absolute;
     right: 10vw;
-    top: 17vh;
+    top: 11vh;
 }
 
 /* main content */
@@ -216,17 +244,23 @@ header {
 
 #confirm {
     border-bottom: 3px solid #ccc;
-    padding-bottom: 15%;
+    /* padding-bottom: 15%; */
+    padding: 5% 7% 12% 7%;
 }
 
 .btn-primary.follow-button {
-    margin-left: 58%;
+    /* margin-left: 58%; */
+    width: 9.1vw;
+    height: 5vh;
+    margin: 5% 0 5% 50%;
+
 }
 
 .btn-primary.follower-button {
-    margin-left: 58%;
-    /* padding-bottom: 10px;
-    border-bottom: 5px solid #ccc; */
+    /* margin-left: 58%; */
+    width: 9.1vw;
+    height: 5vh;
+    margin: 5% 0 5% 50%;
 }
 
 .btn-primary.search-button {
@@ -244,8 +278,10 @@ header {
 .white-bold-text {
     position: absolute;
     right: 10%;
+    top: 4%;
     color: white;
     font-weight: bold;
+    font-size: 1.5em;
 }
 
 
@@ -340,6 +376,7 @@ header {
     position: absolute;
     left: 10%;
     top: 12%;
+    width: 5%;
 }
 
 .post {
@@ -434,7 +471,7 @@ header {
 }
 
 .modal__bg {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.2);
     height: 100vh;
     position: absolute;
     width: 100%;
@@ -463,6 +500,7 @@ header {
 }
 
 .js-modal-close {
+    /* background-color: rgba(0, 0, 0, 0.8); */
     position: absolute;
     left: 20px;
     bottom: 20px;
@@ -486,16 +524,18 @@ header {
     outline: none;
     background-color: transparent;
     opacity: 0.5;
+    padding-left: 2%;
 }
 
-.search-form:focus::placeholder {
+/* .search-form::placeholder {
     color: transparent;
-}
+    padding-left: 3%;
+} */
 
 .search-btn {
     position: absolute;
-    left: 27%;
-    top: 24.5%;
+    left: 31%;
+    top: 22%;
     width: 3vw;
     height: 3hw;
     border-radius: 0.5em;
@@ -503,8 +543,8 @@ header {
 
 .search-word {
     position: absolute;
-    right: 50%;
-    top: 27%;
+    right: 25%;
+    top: 11%;
     font-size: 1.5rem;
 }
 
@@ -529,11 +569,24 @@ header {
     left: 5%;
 }
 
-.fw-Icon {
+.fw-head {
     display: flex;
-    position: absolute;
-    right: 58%;
-    top: 20%;
+    flex-wrap: wrap;
+    margin-left: 25%;
+    /* justify-content: center; */
+}
+
+.fw-form {}
+
+.fw-Icon {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* position: absolute; */
+    /* right: 58%; */
+    /* bottom: 12%; */
+    width: 4em;
+    height: 4em;
+    margin-right: 3em;
 }
 
 
@@ -541,6 +594,7 @@ header {
     position: absolute;
     top: 20%;
     left: 10%;
+    width: 5%;
 }
 
 .fw-post {
@@ -557,17 +611,18 @@ header {
 }
 
 .btn.btn-danger {
-    height: 6vh;
-    width: 8vw;
+    height: 5vh;
+    width: 9vw;
     border-radius: 0.5rem;
     font-size: 1.2rem;
 }
 
 .follow-btn {
-    background-color: #66ccff;
+    background-color: #00BFFF;
     color: white;
-    height: 6vh;
-    width: 8vw;
+    height: 5vh;
+    width: 9vw;
+    border: none;
     border-radius: 0.5rem;
     font-size: 1.2rem;
 }
@@ -579,13 +634,24 @@ header {
 .profile {
     position: absolute;
     left: 20%;
-    bottom: 35%;
+    bottom: 11%;
 }
 
-.profile-name {
+.pro-item {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.profile-sentence {
     position: absolute;
-    left: 30%;
-    top: 25%;
+    top: 2.5em;
+    right: 50em;
+}
+
+.profile-text {
+    margin-bottom: 1.5em;
+    font-size: 1.3em;
+    font-weight: 500;
 }
 
 .pro-follow-btn {
@@ -594,8 +660,12 @@ header {
     bottom: 20%;
     background-color: #66ccff;
     color: white;
-    height: 6vh;
+    /* height: 6vh;
     width: 8vw;
+    border-radius: 0.5rem;
+    font-size: 1.2rem; */
+    height: 5vh;
+    width: 9vw;
     border-radius: 0.5rem;
     font-size: 1.2rem;
 }
@@ -619,12 +689,15 @@ header {
     position: absolute;
     left: 10%;
     top: 10%;
+    width: 5em;
+    height: 5em;
 }
 
 .propost-name {
     position: absolute;
     left: 18%;
-    top: 15%;
+    top: 25%;
+    font-size: 1em;
 }
 
 .propost-post {
@@ -645,7 +718,7 @@ header {
     height: 110%;
 }
 
-.myuserIcon {
+.proIcon {
     width: 5rem;
     height: 5rem;
     margin-right: 5%;

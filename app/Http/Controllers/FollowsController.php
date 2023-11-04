@@ -40,6 +40,10 @@ class FollowsController extends Controller
         $users = User::whereIn('users.id', $followedUsers)
             ->with('posts')
             ->get();
+
+        $posts = Post::whereIn('posts.user_id', $followedUsers)
+            ->with('users')
+            ->get();
         // dd($posts);
         return view('follows.followList')->with('users', $users);
     }

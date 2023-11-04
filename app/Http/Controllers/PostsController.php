@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Post;
-
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Form;
 
 
 class PostsController extends Controller
@@ -15,12 +12,14 @@ class PostsController extends Controller
     {
         $followed_id = Auth::user()->following()->pluck('followed_id');
         $login_id = Auth::id();
-        $posts = Post::with('user')->whereIn('posts.user_id', $followed_id)
-            ->orWhere('posts.user_id', $login_id)->get();
+        $posts = Post::with('user')
+            ->whereIn('posts.user_id', $followed_id)
+            ->orWhere('posts.user_id', $login_id)
+            ->orderBy('posts.created_at', 'desc')
+            ->get();
         $user = Auth::user();
         $followingCount = $user->following()->count();
         $followerCount = $user->followers()->count();
-        // dd($followingCount);
         return view('posts.index')->with('posts', $posts)
         ->with('followingCount', $followingCount)
         ->with('followerCount', $followerCount);
@@ -57,11 +56,16 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $updatedPostContent = nl2br($request->input('update'));
+        // $updatedPostContent = $request->input('update');
+        // $updateData = $request->input('update');
+        $id = $request->input('id');
         $post = Post::find($id);
-        $post->post = $updatedPostContent;
+        // $post = Post::where('id', $id)->update([
+        //     'post' => $updateData,
+        // ]);
+        $post->post = $request->input('update');
         $post->save();
 
         return redirect('/top')->with('post', $post);

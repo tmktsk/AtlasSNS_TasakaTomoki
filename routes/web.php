@@ -33,6 +33,7 @@ Route::get('/top', 'PostsController@index')->middleware('auth');
 Route::get('/profile', 'UsersController@profile')->middleware('auth');
 
 Route::get('/search', 'UsersController@search')->middleware('auth');
+Route::post('/search', 'UsersController@search')->middleware('auth');
 
 Route::get('/follow-list', 'FollowsController@followList')->middleware('auth');
 Route::get('/follower-list', 'FollowsController@followerList')->middleware('auth');
@@ -43,9 +44,9 @@ Route::post('/unfollow/{user}', 'FollowsController@unfollow')->middleware('auth'
 Route::post('/create', 'PostsController@store');
 
 Route::get('/post/{id}/delete', 'PostsController@delete')->name('post.delete');
-Route::post('/update/{id}', 'PostsController@update')->name('update');
+Route::post('/update', 'PostsController@update')->name('update');
 
-Route::post('/user/search', 'UsersController@search')->middleware('auth')->name('user.search');
+Route::get('/user/search', 'UsersController@search')->middleware('auth')->name('user.search');
 
 Route::post('profile/{user}', 'UsersController@userprofile')->middleware('auth')->name('user.profile');
 Route::get('profile/{user}', 'UsersController@userprofile')->middleware('auth')->name('user.profile');

@@ -3,7 +3,11 @@
 @section('content')
 <p>プロフィール</p>
 <div class="myprofile">
-    <img  src="{{ asset(Auth::user()->images) }}" alt="User Icon" class="myuserIcon">
+  @if(optional(Auth::user())->check)
+    <img src="{{ asset('storage/'. Auth::user()->images) }}" alt="User Icon" class="proIcon">
+  @else
+    <img src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="proIcon">
+  @endif
   <div class="myprofile-item">
     <p>user name</p>
     <p>mail address</p>

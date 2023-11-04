@@ -25,17 +25,21 @@
 <body>
     <header>
         <div id = "head">
-            <h1><a href="/top"><img src="{{ asset('images/atlas.png') }}" alt="Logo Image"></a></h1>
+            <h1><a href="/top"><img class="logo" src="{{ asset('images/atlas.png') }}" alt="Logo Image"></a></h1>
                 <p class="white-bold-text">{{ Auth::user()->username }}さん</p>
             <div id="menu-container">
                 <div class="toggle-menu">V</div>
                 <ul class="menu-list">
                     <li><a href="/top">HOME</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
+                    <li><a href="/profile">プロフィール編集</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
             </div>
-            <img src="{{ asset(Auth::user()->images) }}" alt="User Icon" class="Icon">
+            @if(optional(Auth::user())->check)
+                <img  src="{{ asset('storage/'. Auth::user()->images) }}" alt="User Icon" class="sideIcon">
+            @else
+                <img  src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="sideIcon">
+            @endif
         </div>
     </header>
     <div id="row">

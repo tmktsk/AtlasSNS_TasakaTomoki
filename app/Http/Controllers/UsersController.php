@@ -35,15 +35,11 @@ class UsersController extends Controller
         }
         $user = $query->get();
         return view('users.search', compact('user', 'searchWord'));
+        // return redirect('/search')->with('user', '$user')->with('searchWord', $searchWord);
     }
 
     public function setting(RegisterFormRequest $request)
     {
-        // if ($request->isMethod('post')) {
-
-            // if (!File::exists(public_path('uploads'))) {
-            //     File::makeDirectory(public_path('uploads'), 0755, true, true);
-            // }
             $profileImage = $request->file('images');
             $validation = $request->validated();
 
@@ -54,37 +50,19 @@ class UsersController extends Controller
             $user->bio = $validation['bio'];
 
             if($profileImage) {
-                $path = $profileImage->store('');
-                // dd($path);
-                // $path = asset('storage/images'. Auth::user()->images);
+                // $path = Storage::disk('public')->putFileAs('images', $profileImage, $newimage);
+                $path = $profileImage->store('images', 'public');
                 $user->update(['images' => $path]);
+                $user->check = 'yes';
                 $user->save();
-            } else {
-                // asset('images/'. Auth::user()->images);
-                $path = asset('images/'. Auth::user()->images);
             }
 
-            $user->images = $path;
-            // $user->images = $validation['images'];
-            // if ($request->hasFile('images')) {
-            //     $uploadedFile = $request->file('images');
-            //     $path = $uploadedFile->storeAs('uploads', 'icon.png','public');
-            //     $user->images = $path;
-                // $hasUploadedImage = true;
+            // $user->images = $path;
 
             $user->save();
 
-        // }
-
-        // $user->save();
-        // $request->session()->put("request", $request);
         return redirect('/profile')->with('success', 'プロフィールを更新しました！');
     }
 
-    // public function usersearch(Request $request){
-    //     $searchWord = $request->input('search');
-    //     $users = User::where('username', 'like', "%{$searchWord}")->get();
-    //     return view('users.search', ['users' => $users]);
-    // }
 
 }
