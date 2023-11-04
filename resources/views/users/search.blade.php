@@ -5,7 +5,7 @@
     <form action="{{ route('user.search') }}" method="GET">
       @csrf
       <input type="text" name="search" class="search-form" placeholder="ユーザー名">
-      <input type="image" src="images/search.png" class="search-btn" alt="検索">
+      <input type="image" src="{{ asset('images/search.png') }}" class="search-btn" alt="検索">
     </form>
   </div>
   @if($searchWord)
@@ -16,7 +16,7 @@
       @if(optional(Auth::user())->check)
         <img  src="{{ asset('storage/'. $datauser->images) }}" alt="User Icon" class="searchIcon">
       @else
-        <img src="{{ asset('images/' . $datauser->images) }}" alt="ユーザーアイコン" class="searchIcon">
+        <img src="{{ asset('images/'. $datauser->images) }}" alt="ユーザーアイコン" class="searchIcon">
       @endif
       <span class="search-name">{{ $datauser->username }}</span>
       <div class="btn-container">

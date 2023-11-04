@@ -17,18 +17,16 @@
   </div>
 </div>
     @if($user->posts->count() > 0)
-      @foreach ($users as $user)
+      @foreach ($posts as $post)
         <div class="fw-box">
-          @if($user->check)
-            <img  src="{{ asset('storage/'. $user->images) }}" alt="User Icon" class="fw-userIcon">
+          @if($post->check)
+            <img src="{{ asset('storage/'. $post->user->images) }}" alt="User Icon" class="fw-userIcon">
           @else
-            <img  src="{{ asset('images/'. $user->images) }}" alt="User Icon" class="fw-userIcon">
+            <img src="{{ asset('images/'. $post->user->images) }}" alt="User Icon" class="fw-userIcon">
           @endif
-          <p class="fw-username">{{ $user->username }}</p>
-          @foreach ($user->posts as $post)
+          <p class="fw-username">{{ $post->user->username }}</p>
             <p class="fw-timestamp">{{ $post->created_at->format('Y-m-d H:i') }}</p>
             <p class="fw-post">{{ $post->post }}</p>
-          @endforeach
         </div>
       @endforeach
     @endif

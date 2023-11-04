@@ -42,11 +42,14 @@ class FollowsController extends Controller
             ->get();
 
         $posts = Post::whereIn('posts.user_id', $followedUsers)
-            ->with('users')
+            ->with('user')
             ->get();
-        // dd($posts);
-        return view('follows.followList')->with('users', $users);
+
+        return view('follows.followList')
+            ->with('users', $users)
+            ->with('posts', $posts);
     }
+
     public function followerList()
     {
         $followerUsers = Auth::user()->followers()->pluck('following_id');
