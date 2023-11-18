@@ -1,7 +1,6 @@
 @extends('layouts.login')
 @section('content')
-  <p>ユーザー検索</p>
-  <div class="head-container">
+  <div class="fw-container">
     <form action="{{ route('user.search') }}" method="GET">
       @csrf
       <input type="text" name="search" class="search-form" placeholder="ユーザー名">

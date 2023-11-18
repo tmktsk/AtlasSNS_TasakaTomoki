@@ -1,7 +1,6 @@
 @extends('layouts.login')
 
 @section('content')
-<p>ユーザープロフィール</p>
 <div class="head-container">
   @if(optional(Auth::user())->check)
     <img  src="{{ asset('storage/'. $user->images) }}" alt="User Icon" class="userIcon">

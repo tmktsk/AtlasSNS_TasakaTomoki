@@ -1,8 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<p>フォローリスト</p>
-<div class="head-container">
+<div class="fw-container">
   <h1 class="list-title">Follow List</h1>
   <div class="fw-head">
     @foreach ($users as $user)
@@ -16,7 +15,7 @@
     @endforeach
   </div>
 </div>
-    @if($user->posts->count() > 0)
+    @if($posts->count() > 0)
       @foreach ($posts as $post)
         <div class="fw-box">
           @if($post->check)

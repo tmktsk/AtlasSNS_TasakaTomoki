@@ -15,10 +15,10 @@
         {{ Form::text('mail',null,['class' => 'logout-form']) }}
 
         {{ Form::label('password', 'password', ['class' => 'label']) }}
-        {{ Form::text('password',null,['class' => 'logout-form']) }}
+        {{ Form::password('password',['class' => 'logout-form']) }}
 
         {{ Form::label('password_confirm', 'password confirm', ['class' => 'label']) }}
-        {{ Form::text('password_confirm',null,['class' => 'logout-form']) }}
+        {{ Form::password('password_confirm',['class' => 'logout-form']) }}
 
         @if ($errors->any())
             <div class="alert alert-danger">

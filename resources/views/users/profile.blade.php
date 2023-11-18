@@ -1,31 +1,39 @@
 @extends('layouts.login')
 
 @section('content')
-<p>プロフィール</p>
 <div class="myprofile">
   @if(optional(Auth::user())->check)
     <img src="{{ asset('storage/'. Auth::user()->images) }}" alt="User Icon" class="proIcon">
   @else
     <img src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="proIcon">
   @endif
-  <div class="myprofile-item">
-    <p>user name</p>
-    <p>mail address</p>
-    <p>password</p>
-    <p>password confirm</p>
-    <p>bio</p>
-    <p>icon image</p>
-  </div>
   <div class="myform">
     {!! Form::open(['url' => '/setting', 'files' => true, 'class' => 'my-form']) !!}
       @csrf
-    {{ Form::text('username', Auth::user()->username, ['class' => 'myinput none', 'placeholder' => Auth::user()->username]) }}
-    {{ Form::text('mail', Auth::user()->mail, ['class' => 'myinput none', 'placeholder' => Auth::user()->mail]) }}
-    <input type="password" name="password" class="myinput">
-    <input type="password" name="password_confirm" class="myinput">
-    {{ Form::text('bio', Auth::user()->bio, ['class' => 'myinput']) }}
-    {{ Form::file('images', ['class' => 'myinput']) }}
-
+      <div class="form">
+        {{ Form::label('username', 'user name') }}
+        {{ Form::text('username', Auth::user()->username, ['class' => 'myinput none', 'placeholder' => Auth::user()->username]) }}
+      </div>
+      <div class="form">
+        {{ Form::label('mail adress') }}
+        {{ Form::text('mail', Auth::user()->mail, ['class' => 'myinput none', 'placeholder' => Auth::user()->mail]) }}
+      </div>
+      <div class="form">
+        {{ Form::label('password') }}
+        <input type="password" name="password" class="myinput">
+      </div>
+      <div class="form">
+        {{ Form::label('password confirm') }}
+        <input type="password" name="password_confirm" class="myinput">
+      </div>
+      <div class="form">
+        {{ Form::label('bio') }}
+        {{ Form::text('bio', Auth::user()->bio, ['class' => 'myinput']) }}
+      </div>
+      <div class="form">
+        {{ Form::label('icon image') }}
+        {{ Form::file('images', ['class' => 'myinput']) }}
+      </div>
     @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}

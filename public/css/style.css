@@ -12,12 +12,23 @@ header {
 
 .title-header {
     text-align: center;
-    padding-top: 5em;
-    /* padding-bottom: -10em; */
+    padding-top: 8em;
 }
 
-.title {
+.title1 {
     color: #FFFFFF;
+    font-size: 5em;
+    margin-top: -2%;
+}
+
+.title2 {
+    color: #FFFFFF;
+    font-size: 3em;
+}
+
+#logout-container {
+    /* position: relative; */
+    /* z-index: -1; */
 }
 
 #head {
@@ -46,12 +57,20 @@ header {
     margin: 2em auto;
 }
 
+.alert-danger li {
+    margin-bottom: 3%;
+    text-align: center;
+}
+
 .logout-block {
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 1em;
+    /* position: absolute; */
+    /* top: 5%; */
+    /* padding: 0 2%; */
 }
 
 .label {
@@ -71,8 +90,6 @@ header {
 }
 
 .first-btn {
-    /* display: flex; */
-    /* justify-content: center; */
     background-color: #FF0066;
     color: white;
     height: 2em;
@@ -136,8 +153,8 @@ header {
 }
 
 #container {
-    position: relative;
-    width: 70%;
+    /* position: relative; */
+    flex: 0 0 80%;
     margin: 0 auto;
 }
 
@@ -211,34 +228,34 @@ header {
 
 .head-container {
     display: flex;
-    position: relative;
-    width: 80.3vw;
-    margin-left: -6%;
     border-bottom: 10px solid #ccc;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
+    /* height: 25%; */
 }
 
 .post-img {
     border-radius: 5px;
-    width: 4em;
-    height: 4em;
-    position: absolute;
-    right: 10vw;
-    top: 11vh;
+    width: 6%;
+    /* height: 8%; */
+    margin-top: 1vh;
+    display: block;
+    margin-left: auto;
+    margin-right: 15%;
 }
 
 /* main content */
 #row {
     display: flex;
+    flex-flow: row wrap;
 }
 
 #side-bar {
-    /* flex: 0 0 20%; */
+    flex: 0 0 20%;
     /* display: flex; */
-    flex: 1;
+    /* flex: 1; */
     /* height: 0%; */
-    max-width: 20%;
-    margin-left: auto;
+    /* max-width: 20%; */
+    /* margin-left: auto; */
     border-left: 1px solid #727272;
 }
 
@@ -284,6 +301,9 @@ header {
     font-size: 1.5em;
 }
 
+.create-form {
+    width: 100%;
+}
 
 /* フォームコントロールのスタイル */
 .post-form {
@@ -291,7 +311,7 @@ header {
     /* 枠線を無しにする */
     background-color: transparent;
     /* 背景色を透明にする */
-    width: 20vw;
+    width: 60vw;
     /* 幅を指定（適宜調整してください） */
     font-size: 1.5rem;
     /* フォントサイズを指定 */
@@ -310,9 +330,9 @@ header {
 
 .userIcon {
     margin-left: 10vw;
-    margin-top: 5vh;
-    width: 75px;
-    height: 75px;
+    margin-top: 1vh;
+    width: 6%;
+    height: 6%;
 }
 
 .form-control {
@@ -331,11 +351,12 @@ header {
 }
 
 .post-content {
-    position: relative;
+    /* position: relative; */
     border-bottom: 3px solid #ccc;
-    width: 79.6vw;
-    left: -5%;
-    padding-bottom: 3%;
+    /* width: 79.6vw; */
+    /* left: -5%; */
+    display: flex;
+    padding-bottom: 1%;
     /* margin: -45px; */
     /* margin: -45vw; */
 }
@@ -349,12 +370,11 @@ header {
 } */
 
 .fw-box {
-    position: relative;
-    padding: 5%;
-    width: 80.1vw;
-    left: -4rem;
-    top: 0%;
+    /* position: relative; */
+    /* padding: 5%; */
+    /* top: 0%; */
     border-bottom: 3px solid #ccc;
+    height: 10%;
 }
 
 .follow-postIcon {
@@ -364,99 +384,100 @@ header {
 }
 
 .fw-username {
-    position: absolute;
-    left: 17%;
-    top: 20%;
     font-weight: 600;
+    margin-left: 13%;
+    margin-top: -5%;
 }
 
 .fw-timestamp {
-    position: absolute;
-    right: 2%;
-    top: 10%;
+    margin-left: auto;
+    display: block;
+    width: 13%;
+    margin-top: -4.5%;
 }
 
 .postIcon {
-    position: absolute;
-    left: 10%;
-    top: 12%;
+    /* position: absolute; */
+    margin-left: 10%;
+    margin-top: 1%;
     width: 5%;
+    height: 5%;
+}
+
+.namepost {
+    display: flex;
+    flex-direction: column;
 }
 
 .post {
-    position: absolute;
-    display: block;
-    left: 20%;
-    top: 40%;
+    margin-left: 15%;
+    width: 100%;
+    margin-top: 5%;
 }
 
 .username {
     font-weight: 600;
-    position: absolute;
-    left: 17%;
-    top: 12%;
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
+.test3 {
+    margin-left: auto;
 }
 
 .timestamp {
-    position: absolute;
-    right: 3%;
-    top: 8%;
+    margin-left: -10%;
+    margin-top: 3%;
+}
+
+.test2 {
+    display: flex;
+    margin-top: 20%;
+}
+
+.js-modal-open {
+    width: 2vw;
+    height: 4vh;
+    margin-left: 15%;
 }
 
 .search-name {
     font-weight: 500;
     font-size: 1.5rem;
-    position: absolute;
-    left: 18%;
-    top: 15%;
+    margin-left: 5%;
+    /* position: absolute; */
+    /* left: 18%; */
+    /* top: 15%; */
 }
 
 .edit-btn {
-    position: absolute;
     right: 35px;
 }
 
-/* qiitaサイト参照 */
-.dlt-btn-container {
-    position: absolute;
-    text-align: right;
+.test4 {
+    width: 2vw;
+    height: 2vw;
+    margin-left: 20%;
 }
 
 .dlt-btn {
-    background: none;
+    width: 100%;
+    height: 100%;
+    background: url('../images/trash.png');
+    background-size: 100% 100%;
     border: none;
-    padding: 0;
-    cursor: pointer;
-    /* position: relative; */
-    display: inline-block;
 }
 
-.normal-img {
-    display: block;
-    position: absolute;
-    right: 4%;
-    bottom: 2vh;
-}
-
-.hover-img {
-    display: none;
-    position: absolute;
-    right: 4%;
-    bottom: 2vh;
-}
-
-.dlt-btn:hover .normal-img {
-    display: none;
-}
-
-.dlt-btn:hover .hover-img {
-    display: block;
+.dlt-btn:hover {
+    width: 100%;
+    height: 100%;
+    background: url('../images/trash-h.png');
+    background-size: 100% 100%;
+    border: none;
 }
 
 .edit-img {
-    position: absolute;
-    right: 8%;
-    bottom: 2vh;
+    width: 2vw;
 }
 
 
@@ -469,8 +490,7 @@ header {
 .modal {
     display: none;
     height: 100vh;
-    position: fixed;
-    top: 0;
+    position: absolute;
     width: 100%;
 }
 
@@ -483,12 +503,13 @@ header {
 
 .modal__content {
     background: #fff;
-    left: 60%;
-    padding: 15px;
+    left: 50%;
+    padding: 1%;
     position: absolute;
-    top: 70%;
+    top: 55%;
     transform: translate(-50%, -50%);
     width: 60%;
+    height: 27%;
 }
 
 #modal_post {
@@ -508,7 +529,7 @@ header {
     position: absolute;
     left: 20px;
     bottom: 20px;
-    font-size: 35px;
+    font-size: 2em;
 }
 
 .search-container {
@@ -519,9 +540,11 @@ header {
 }
 
 .search-form {
-    position: absolute;
-    left: 5%;
-    top: 25%;
+    /* position: absolute; */
+    /* left: 5%; */
+    /* top: 25%; */
+    margin-top: 20%;
+    margin-left: 30%;
     width: 20vw;
     height: 2.5vw;
     border-radius: 0.3em;
@@ -530,11 +553,6 @@ header {
     opacity: 0.5;
     padding-left: 2%;
 }
-
-/* .search-form::placeholder {
-    color: transparent;
-    padding-left: 3%;
-} */
 
 .search-btn {
     position: absolute;
@@ -553,7 +571,7 @@ header {
 }
 
 .search {
-    position: relative;
+    /* position: relative; */
     display: flex;
     margin: 10vh auto;
     width: 50%;
@@ -561,57 +579,47 @@ header {
 
 .fw-container {
     display: flex;
-    position: relative;
     border-bottom: 10px solid #ccc;
-    padding-bottom: 11%;
-    width: 80.2vw;
-    left: -5%;
+    padding-bottom: 2%;
+    height: 35%;
 }
 
 .list-title {
-    position: absolute;
-    left: 5%;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 .fw-head {
     display: flex;
     flex-wrap: wrap;
     margin-left: 25%;
-    /* justify-content: center; */
 }
 
-.fw-form {}
-
 .fw-Icon {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* position: absolute; */
-    /* right: 58%; */
-    /* bottom: 12%; */
     width: 4em;
     height: 4em;
-    margin-right: 3em;
+    margin-right: 1em;
+    margin-left: 15%;
 }
 
 
 .fw-userIcon {
-    position: absolute;
-    top: 20%;
-    left: 10%;
     width: 5%;
+    margin-top: 1.5%;
+    margin-left: 5%;
 }
 
 .fw-post {
-    position: absolute;
-    left: 20%;
-    bottom: 25%;
-    flex-direction: column;
+    /* flex-direction: column; */
+    margin-left: 15%;
+    margin-top: 1%;
 }
 
 .btn-container {
-    position: absolute;
-    right: -5%;
-    top: 15%;
+    /* position: absolute; */
+    /* right: -5%; */
+    /* top: 15%; */
+    margin-left: ;
 }
 
 .btn.btn-danger {
@@ -636,9 +644,12 @@ header {
 }
 
 .profile {
-    position: absolute;
-    left: 20%;
-    bottom: 11%;
+    /* position: absolute; */
+    /* left: 20%; */
+    /* bottom: 11%; */
+    margin-left: 35%;
+    margin-top: 30%;
+    margin-bottom: -30%;
 }
 
 .pro-item {
@@ -664,10 +675,6 @@ header {
     bottom: 20%;
     background-color: #66ccff;
     color: white;
-    /* height: 6vh;
-    width: 8vw;
-    border-radius: 0.5rem;
-    font-size: 1.2rem; */
     height: 5vh;
     width: 9vw;
     border-radius: 0.5rem;
@@ -682,10 +689,9 @@ header {
 
 
 .user-profile {
-    position: relative;
+    /* position: relative; */
     width: 109%;
     height: 35%;
-    /* padding-bottom: 2%; */
     border-bottom: 2px solid #ccc;
 }
 
@@ -723,41 +729,42 @@ header {
 }
 
 .proIcon {
-    width: 5rem;
-    height: 5rem;
-    margin-right: 5%;
-}
-
-.myprofile-item {
-    left: 25%;
-    top: 30%;
-}
-
-.myprofile-item p {
-    font-size: 2rem;
-    margin-bottom: 25%;
+    width: 4rem;
+    height: 4rem;
+    margin-left: 10%;
 }
 
 .myform {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
+    margin-top: 1%;
+    width: 65%;
 }
 
 .my-form {
     display: flex;
     flex-direction: column;
     height: 100%;
+    font-size: 1.8em;
 }
 
-.myinput {
-    margin-bottom: 19%;
-    width: 130%;
-    height: 6%;
+.form {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.form label {
+    width: 42%;
+    margin-right: -4%;
+    margin-left: 6%;
+}
+
+.form input {
+    width: 50%;
 }
 
 .btn.btn-danger.myupdate {
-    margin-top: 15%;
+    margin-left: 35%;
 }
 
 .myinput.none:focus::placeholder {

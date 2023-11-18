@@ -7,7 +7,7 @@
         @else
         <img  src="{{ asset('images/'. Auth::user()->images) }}" alt="User Icon" class="userIcon">
         @endif
-        {!! Form::open(['url' => '/create', 'method' => 'POST']) !!}
+        {!! Form::open(['url' => '/create', 'method' => 'POST', 'class' => 'create-form']) !!}
             @csrf
             {{ Form::input('text', 'post', null, ['required', 'class' => 'post-form', 'placeholder' => '投稿内容を入力してください。']) }}
             <input type="image" src="images/post.png" class="post-img">
@@ -20,29 +20,25 @@
             @else
             <img src="{{ asset('images/'. $post->user->images) }}" alt="User Icon" class="postIcon">
             @endif
-            <span class="username">{{ $post->user->username }}</span>
-            <span class="timestamp">{{ $post->created_at->format('Y-m-d H:i') }}</span>
-            <span class="post">{!! nl2br(e($post->post)) !!}</span>
-            <form
-                style="disply: inline-block;"
-                method="GET"
-                action="{{ route('post.delete', $post->id) }}">
-                @csrf
-                @method('DELETE')
+            <div class="namepost">
+                <span class="username">{{ $post->user->username }}</span>
+                <span class="post">{!! nl2br(e($post->post)) !!}</span>
+            </div>
+            <div class="test3">
+                <div class="timestamp">{{ $post->created_at->format('Y-m-d H:i') }}</div>
                 @if(Auth::check() && Auth::user()->id === $post->user_id)
-                    <div class="dlt-btn-cntainer">
-                        <button class="dlt-btn">
-                            <img src="images/trash.png" alt="削除ボタン1" class="normal-img" width="50" height="50">
-                            <img src="images/trash-h.png" alt="削除ボタン2" class="hover-img" width="50" height="50">
-                        </button>
+                    <div class="test2">
+                        <a class="js-modal-open" href="#" data-post="{!! $post->post !!}" data-post_id="{{ $post->id }}">
+                            <img src="images/edit.png" alt="編集" class="edit-img">
+                        </a>
+                        <div class="test">
+                            <form method="GET" action="{{ route('post.delete', $post->id) }}" class="test4">
+                                @csrf
+                                @method('DELETE')
+                                <button type="image" class="dlt-btn"></button>
+                            </form>
+                        </div>
                     </div>
-                @endif
-            </form>
-            <div class="content">
-                @if(Auth::check() && Auth::user()->id === $post->user_id)
-                    <a class="js-modal-open" href="#" data-post="{!! $post->post !!}" data-post_id="{{ $post->id }}">
-                        <img src="images/edit.png" alt="編集" class="edit-img" width="50" height="50">
-                    </a>
                 @endif
             </div>
         </div>
@@ -61,7 +57,6 @@
                     <input type="image" src="images/edit.png" alt="更新ボタン" class="update-btn" width="50" height="50">
                     {{ csrf_field() }}
                 </form>
-                <a class="js-modal-close" href="#">✖</a>
             </div>
         </div>
     @endif

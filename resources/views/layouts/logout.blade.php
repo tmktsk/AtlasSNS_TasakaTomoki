@@ -22,10 +22,10 @@
 </head>
 <body>
   <header class="title-header">
-    <h1 class="title" style="font-size: 5em;">Atlas</h1>
-    <p class="title" style="font-size: 3em">Social Network Service</p>
+    <h1 class="title1" style="font-size: 5em;">Atlas</h1>
+    <p class="title2" style="font-size: 3em">Social Network Service</p>
   </header>
-  <div id="logout-container">
+  <div id="logout-container" >
     @yield('content')
   </div>
   <script src="JavaScriptファイルのURL"></script>

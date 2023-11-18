@@ -1,8 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<p>フォロワーリスト</p>
-<div class="head-container">
+<div class="fw-container">
   <h1 class="list-title">Follower List</h1>
   <div class="fw-head">
     @foreach ($users as $user)
