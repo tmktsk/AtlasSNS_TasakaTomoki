@@ -181,7 +181,7 @@ header {
     position: absolute;
     top: 12.2%;
     right: 0;
-    height: 30%;
+    height: 26.5%;
     width: 20%;
 }
 
@@ -191,7 +191,7 @@ header {
     text-decoration: none;
     color: black;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.8rem;
     border: 1px solid blue;
 }
 
@@ -219,9 +219,8 @@ header {
 }
 
 .sideIcon {
-    height: 75px;
-    width: 75px;
-    margin-top: 1.5em;
+    width: 4%;
+    margin-top: 1em;
     margin-right: 2em;
 
 }
@@ -270,6 +269,7 @@ header {
     width: 9.1vw;
     height: 5vh;
     margin: 5% 0 5% 50%;
+    padding: 0%;
 
 }
 
@@ -278,6 +278,7 @@ header {
     width: 9.1vw;
     height: 5vh;
     margin: 5% 0 5% 50%;
+    padding: 0%;
 }
 
 .btn-primary.search-button {
@@ -290,6 +291,7 @@ header {
 
 .btn-primary a {
     color: white;
+    font-size: 0.9em;
 }
 
 .white-bold-text {
@@ -330,7 +332,7 @@ header {
 
 .userIcon {
     margin-left: 10vw;
-    margin-top: 1vh;
+    margin-top: 3vh;
     width: 6%;
     height: 6%;
 }
@@ -351,30 +353,15 @@ header {
 }
 
 .post-content {
-    /* position: relative; */
     border-bottom: 3px solid #ccc;
-    /* width: 79.6vw; */
-    /* left: -5%; */
     display: flex;
     padding-bottom: 1%;
-    /* margin: -45px; */
-    /* margin: -45vw; */
 }
 
-/* .post-content::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    border-bottom: 3px solid #ccc;
-} */
 
 .fw-box {
-    /* position: relative; */
-    /* padding: 5%; */
-    /* top: 0%; */
     border-bottom: 3px solid #ccc;
-    height: 10%;
+    height: 30%;
 }
 
 .follow-postIcon {
@@ -391,9 +378,10 @@ header {
 
 .fw-timestamp {
     margin-left: auto;
+    margin-right: -4%;
     display: block;
     width: 13%;
-    margin-top: -4.5%;
+    margin-top: -3.5%;
 }
 
 .postIcon {
@@ -444,10 +432,7 @@ header {
 .search-name {
     font-weight: 500;
     font-size: 1.5rem;
-    margin-left: 5%;
-    /* position: absolute; */
-    /* left: 18%; */
-    /* top: 15%; */
+    margin-right: 35%;
 }
 
 .edit-btn {
@@ -527,8 +512,8 @@ header {
 .js-modal-close {
     /* background-color: rgba(0, 0, 0, 0.8); */
     position: absolute;
-    left: 20px;
-    bottom: 20px;
+    /* left: 20px; */
+    /* bottom: 20px; */
     font-size: 2em;
 }
 
@@ -539,12 +524,16 @@ header {
     width: 114.5%;
 }
 
+.search-box {
+    margin-left: 13%;
+    margin-top: 4%;
+    display: flex;
+    align-items: center;
+}
+
 .search-form {
-    /* position: absolute; */
-    /* left: 5%; */
-    /* top: 25%; */
-    margin-top: 20%;
-    margin-left: 30%;
+    /* margin-top: 20%; */
+    /* margin-left: 30%; */
     width: 20vw;
     height: 2.5vw;
     border-radius: 0.3em;
@@ -555,26 +544,23 @@ header {
 }
 
 .search-btn {
-    position: absolute;
-    left: 31%;
-    top: 22%;
     width: 3vw;
     height: 3hw;
     border-radius: 0.5em;
+    margin-left: 5%;
 }
 
 .search-word {
-    position: absolute;
-    right: 25%;
-    top: 11%;
     font-size: 1.5rem;
+    margin-left: 5%;
+    margin-top: 5%;
 }
 
 .search {
-    /* position: relative; */
     display: flex;
     margin: 10vh auto;
-    width: 50%;
+    width: 45%;
+    justify-content: space-around;
 }
 
 .fw-container {
@@ -592,7 +578,8 @@ header {
 .fw-head {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 25%;
+    margin-left: 10%;
+    margin-top: 2%;
 }
 
 .fw-Icon {
@@ -612,21 +599,15 @@ header {
 .fw-post {
     /* flex-direction: column; */
     margin-left: 15%;
-    margin-top: 1%;
-}
-
-.btn-container {
-    /* position: absolute; */
-    /* right: -5%; */
-    /* top: 15%; */
-    margin-left: ;
+    margin-top: 2%;
 }
 
 .btn.btn-danger {
     height: 5vh;
     width: 9vw;
     border-radius: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.2em;
+    padding: 0%;
 }
 
 .follow-btn {
@@ -643,13 +624,17 @@ header {
     width: 10%;
 }
 
+.profile-content {
+    width: 100%;
+}
+
 .profile {
-    /* position: absolute; */
-    /* left: 20%; */
-    /* bottom: 11%; */
-    margin-left: 35%;
-    margin-top: 30%;
-    margin-bottom: -30%;
+    margin-top: 4%;
+    margin-left: 3%;
+}
+
+.pro-flex {
+    display: flex;
 }
 
 .pro-item {
@@ -657,75 +642,72 @@ header {
     margin-bottom: 1em;
 }
 
-.profile-sentence {
-    position: absolute;
-    top: 2.5em;
-    right: 50em;
-}
-
-.profile-text {
-    margin-bottom: 1.5em;
+.pro-text {
+    margin-left: 10%;
+    margin-top: 0.5%;
     font-size: 1.3em;
     font-weight: 500;
 }
 
+.pro-btn {
+    margin-left: auto;
+    margin-right: 5%;
+}
+
 .pro-follow-btn {
-    position: absolute;
-    right: 5%;
-    bottom: 20%;
     background-color: #66ccff;
     color: white;
     height: 5vh;
     width: 9vw;
     border-radius: 0.5rem;
+    border: none;
     font-size: 1.2rem;
 }
 
-.btn.pro-btn-danger {
-    position: absolute;
-    right: 5%;
-    bottom: 20%;
-}
+/* .btn.pro-btn-danger {} */
 
 
 .user-profile {
-    /* position: relative; */
-    width: 109%;
+    width: 100%;
     height: 35%;
     border-bottom: 2px solid #ccc;
+    display: flex;
 }
 
 .propost-Icon {
-    position: absolute;
-    left: 10%;
-    top: 10%;
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
+    margin-left: 13%;
+    margin-top: 2%;
+}
+
+.pro-block {
+    margin-top: 3%;
+    margin-left: 3%;
 }
 
 .propost-name {
-    position: absolute;
     left: 18%;
     top: 25%;
     font-size: 1em;
 }
 
 .propost-post {
-    position: absolute;
     left: 20%;
     bottom: 15%;
 }
 
 .propost-time {
-    position: absolute;
-    right: 2%;
-    top: 15%;
+    margin-left: auto;
+    margin-right: 2%;
+    margin-top: 1%;
 }
 
 .myprofile {
     display: flex;
     justify-content: center;
     height: 110%;
+    margin-top: 5%;
 }
 
 .proIcon {
@@ -765,6 +747,7 @@ header {
 
 .btn.btn-danger.myupdate {
     margin-left: 35%;
+    font-size: 1em;
 }
 
 .myinput.none:focus::placeholder {

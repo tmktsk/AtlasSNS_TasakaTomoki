@@ -1,18 +1,18 @@
 @extends('layouts.login')
 @section('content')
   <div class="fw-container">
-    <form action="{{ route('user.search') }}" method="GET">
+    <form action="{{ route('user.search') }}" method="GET" class="search-box">
       @csrf
       <input type="text" name="search" class="search-form" placeholder="ユーザー名">
       <input type="image" src="{{ asset('images/search.png') }}" class="search-btn" alt="検索">
     </form>
+    @if($searchWord)
+      <div class="search-word">検索ワード：{{ $searchWord }}</div>
+    @endif
   </div>
-  @if($searchWord)
-    <div class="search-word">検索ワード：{{ $searchWord }}</div>
-  @endif
   @foreach($user as $datauser)
     <div class="search">
-      @if(optional(Auth::user())->check)
+      @if(optional($datauser)->check)
         <img  src="{{ asset('storage/'. $datauser->images) }}" alt="User Icon" class="searchIcon">
       @else
         <img src="{{ asset('images/'. $datauser->images) }}" alt="ユーザーアイコン" class="searchIcon">

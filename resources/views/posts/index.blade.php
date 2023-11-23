@@ -14,34 +14,34 @@
         {!! Form::close() !!}
     </div>
     @foreach ($posts as $post)
-        <div class="post-content">
-            @if(optional(Auth::user())->check)
-            <img src="{{ asset('storage/'. $post->user->images) }}" alt="User Icon" class="postIcon">
-            @else
-            <img src="{{ asset('images/'. $post->user->images) }}" alt="User Icon" class="postIcon">
-            @endif
-            <div class="namepost">
-                <span class="username">{{ $post->user->username }}</span>
-                <span class="post">{!! nl2br(e($post->post)) !!}</span>
-            </div>
-            <div class="test3">
-                <div class="timestamp">{{ $post->created_at->format('Y-m-d H:i') }}</div>
-                @if(Auth::check() && Auth::user()->id === $post->user_id)
-                    <div class="test2">
-                        <a class="js-modal-open" href="#" data-post="{!! $post->post !!}" data-post_id="{{ $post->id }}">
-                            <img src="images/edit.png" alt="編集" class="edit-img">
-                        </a>
-                        <div class="test">
-                            <form method="GET" action="{{ route('post.delete', $post->id) }}" class="test4">
-                                @csrf
-                                @method('DELETE')
-                                <button type="image" class="dlt-btn"></button>
-                            </form>
-                        </div>
-                    </div>
+        @if(Auth::check() && Auth::user()->id === $post->user_id)
+            <div class="post-content">
+                @if(optional(Auth::user())->check)
+                <img src="{{ asset('storage/'. $post->user->images) }}" alt="User Icon" class="postIcon">
+                @else
+                <img src="{{ asset('images/'. $post->user->images) }}" alt="User Icon" class="postIcon">
                 @endif
+                <div class="namepost">
+                    <span class="username">{{ $post->user->username }}</span>
+                    <span class="post">{!! nl2br(e($post->post)) !!}</span>
+                </div>
+                <div class="test3">
+                    <div class="timestamp">{{ $post->created_at->format('Y-m-d H:i') }}</div>
+                        <div class="test2">
+                            <a class="js-modal-open" href="#" data-post="{!! $post->post !!}" data-post_id="{{ $post->id }}">
+                                <img src="images/edit.png" alt="編集" class="edit-img">
+                            </a>
+                            <div class="test">
+                                <form method="GET" action="{{ route('post.delete', $post->id) }}" class="test4">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="image" class="dlt-btn"></button>
+                                </form>
+                            </div>
+                        </div>
+                </div>
             </div>
-        </div>
+        @endif
     @endforeach
     @if(isset($post))
         <div class="modal js-modal">
