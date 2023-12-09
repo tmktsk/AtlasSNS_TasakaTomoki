@@ -13,6 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
         $faker = Faker::create();
 
         DB::table('users')->insert([
@@ -20,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'TasakaTomoki',
                 'mail' => 'tigertomo228@ab.auone-net.jp',
                 'password' => Hash::make('TomoAtlas228'),
-                'images' => 'images/icon' . $faker->numberBetween(1, 7) . '.png',
+                'images' => 'icon' . $faker->numberBetween(1, 7) . '.png',
             ]
 
         ]);

@@ -75,11 +75,11 @@ class RegisterController extends Controller
                 // 'password_confirmation' => $password_confirmation
             ]);
 
-            $icons = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png', 'icon7.png'];
-            $randomIcon = collect($icons)->random();
-            $user->images = $randomIcon;
+            // $icons = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png', 'icon7.png'];
+            // $randomIcon = collect($icons)->random();
+            // $user->images = $randomIcon;
 
-            $user->save();
+            // $user->save();
             // $user->setRandomImage();
 
 
