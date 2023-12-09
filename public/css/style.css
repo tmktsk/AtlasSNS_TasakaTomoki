@@ -361,7 +361,8 @@ header {
 
 .fw-box {
     border-bottom: 3px solid #ccc;
-    height: 30%;
+    /* height: 30%; */
+    display: flex;
 }
 
 .follow-postIcon {
@@ -372,16 +373,16 @@ header {
 
 .fw-username {
     font-weight: 600;
-    margin-left: 13%;
-    margin-top: -5%;
+    /* margin-left: 13%; */
+    /* margin-top: -5%; */
 }
 
 .fw-timestamp {
     margin-left: auto;
-    margin-right: -4%;
-    display: block;
+    /* margin-right: -4%; */
+    /* display: block; */
     width: 13%;
-    margin-top: -3.5%;
+    /* margin-top: -3.5%; */
 }
 
 .postIcon {
@@ -499,8 +500,8 @@ header {
 
 #modal_post {
     width: 100%;
-    height: 200px;
-    font-size: 35px;
+    height: 22vh;
+    font-size: 2.5em;
 }
 
 .update-btn {
@@ -567,7 +568,7 @@ header {
     display: flex;
     border-bottom: 10px solid #ccc;
     padding-bottom: 2%;
-    height: 35%;
+    height: 15vh;
 }
 
 .list-title {
@@ -592,14 +593,20 @@ header {
 
 .fw-userIcon {
     width: 5%;
-    margin-top: 1.5%;
-    margin-left: 5%;
+    height: 5%;
+    margin-top: 1%;
+    margin-left: 10%;
+}
+
+.fw-block {
+    margin-left: 2%;
+    margin-top: 1%;
 }
 
 .fw-post {
     /* flex-direction: column; */
-    margin-left: 15%;
-    margin-top: 2%;
+    /* margin-left: 15%; */
+    /* margin-top: 2%; */
 }
 
 .btn.btn-danger {
