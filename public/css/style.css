@@ -177,11 +177,11 @@ header {
     padding: 0;
     margin: 0;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     position: absolute;
-    top: 12.2%;
+    top: 7em;
     right: 0;
-    height: 26.5%;
+    /* height: 26.5%; */
     width: 20%;
 }
 
@@ -443,7 +443,7 @@ header {
 .test4 {
     width: 2vw;
     height: 2vw;
-    margin-left: 20%;
+    margin-left: 0.5em;
 }
 
 .dlt-btn {
@@ -750,11 +750,12 @@ header {
 
 .form input {
     width: 50%;
+    margin-left: 1%;
 }
 
 .btn.btn-danger.myupdate {
     margin-left: 35%;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 .myinput.none:focus::placeholder {

@@ -31,13 +31,11 @@
                             <a class="js-modal-open" href="#" data-post="{!! $post->post !!}" data-post_id="{{ $post->id }}">
                                 <img src="images/edit.png" alt="編集" class="edit-img">
                             </a>
-                            <div class="test">
-                                <form method="GET" action="{{ route('post.delete', $post->id) }}" class="test4">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="image" class="dlt-btn"></button>
-                                </form>
-                            </div>
+                            <form method="GET" action="{{ route('post.delete', $post->id) }}" class="test4">
+                                @csrf
+                                @method('DELETE')
+                                <button type="image" class="dlt-btn"></button>
+                            </form>
                         </div>
                 </div>
             </div>
